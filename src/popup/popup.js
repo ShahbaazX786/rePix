@@ -126,18 +126,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Sidebar Links
   document.getElementById('menu-history-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    chrome.tabs.create({ url: chrome.runtime.getURL('fullpage.html') });
+    chrome.tabs.create({ url: chrome.runtime.getURL('src/dashboard/dashboard.html') });
   });
 
   document.getElementById('menu-rate-btn').addEventListener('click', (e) => {
     e.preventDefault();
     alert("Thanks for using Repix! (App Store link coming soon)");
     closeSidebar();
-  });
-
-  document.getElementById('menu-github-btn').addEventListener('click', (e) => {
-    e.preventDefault();
-    chrome.tabs.create({ url: "https://github.com/ShahbaazX786/rePix" });
   });
 
   // --- TWO STEP CONVERSION LOGIC ---
@@ -256,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Open Full Dashboard
   openFullPageBtn.addEventListener('click', () => {
-    chrome.tabs.create({ url: chrome.runtime.getURL('fullpage.html') });
+    chrome.tabs.create({ url: chrome.runtime.getURL('src/dashboard/dashboard.html') });
   });
 
   // Initialize
