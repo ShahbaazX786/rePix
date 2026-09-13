@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Node/Web Tooling (if added later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Extension packages
+*.zip
+*.crx
+*.pem
+
+# Editor directories
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
