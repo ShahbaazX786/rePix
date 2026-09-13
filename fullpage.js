@@ -101,8 +101,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  convertAllBtn.addEventListener('click', () => {
+  // Convert button logic
+  convertAllBtn.addEventListener('click', async () => {
+    if (queuedFiles.length === 0) return;
+
     const format = formatSelect.value;
-    alert(`Ready to convert ${queuedFiles.length} files to ${format}!\n\n(Core conversion logic coming in Step 5)`);
+    const quality = parseInt(qualitySlider.value, 10) / 100;
+    
+    // UI Feedback
+    convertAllBtn.textContent = 'Converting...';
+    convertAllBtn.disabled = true;
+
+    try {
+      for (let i = 0; i < queuedFiles.length; i++) {
+        const file = queuedFiles[i];
+        
+        // Use the shared converter.js logic
+        const convertedBlob = await convertImageFile(file, format, quality);
+        downloadBlob(convertedBlob, file.name, format);
+      }
+      
+      // Update stats (we will store this in chrome.storage later for persistence)
+      alert(`Successfully converted ${queuedFiles.length} files!`);
+      
+      // Clear queue
+      queuedFiles = [];
+      renderFileList();
+      
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred during conversion.");
+    } finally {
+      convertAllBtn.textContent = 'Convert All Files';
+      if (queuedFiles.length > 0) convertAllBtn.disabled = false;
+    }
   });
 });

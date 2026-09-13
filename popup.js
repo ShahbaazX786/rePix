@@ -35,8 +35,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  function handleFile(file) {
+  async function handleFile(file) {
+    if (!file.type.startsWith('image/')) {
+      alert("Please drop a valid image file.");
+      return;
+    }
+
     const formatSelect = document.getElementById('format-select').value;
-    alert(`Ready to convert ${file.name} to ${formatSelect}!\n\n(Conversion logic coming in Step 5!)`);
+    const originalTitle = document.querySelector('.drop-title').textContent;
+    
+    // UI Feedback
+    document.querySelector('.drop-title').textContent = 'Converting...';
+    dropZone.style.pointerEvents = 'none';
+    
+    try {
+      // quality is fixed to 0.9 for quick popup conversions
+      const convertedBlob = await convertImageFile(file, formatSelect, 0.9);
+      downloadBlob(convertedBlob, file.name, formatSelect);
+      
+      document.querySelector('.drop-title').textContent = 'Done!';
+    } catch (error) {
+      console.error(error);
+      alert("Conversion failed.");
+    } finally {
+      setTimeout(() => {
+        document.querySelector('.drop-title').textContent = originalTitle;
+        dropZone.style.pointerEvents = 'all';
+      }, 2000);
+    }
   }
 });
