@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repix - Full Dashboard</title>
+  <link rel="stylesheet" href="fullpage.css">
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="navbar">
+    <div class="brand">
+      <div class="logo">R</div>
+      <span class="brand-name">Repix Dashboard</span>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="active">Converter</a>
+      <a href="#">History</a>
+      <a href="#">Settings</a>
+    </div>
+  </nav>
+
+  <!-- Main Workspace -->
+  <main class="workspace">
+    
+    <!-- Left Column: Dropzone & File List -->
+    <div class="primary-column">
+      
+      <!-- Big Drop Zone -->
+      <div class="full-drop-zone" id="full-drop-zone">
+        <div class="drop-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+        </div>
+        <h2>Drag & Drop AVIF files here</h2>
+        <p>or click to browse from your computer</p>
+        <button class="browse-btn" id="browse-btn">Browse Files</button>
+        <input type="file" id="file-input" accept="image/avif" multiple hidden>
+      </div>
+
+      <!-- File Queue -->
+      <div class="file-queue">
+        <h3>Files to Convert (<span id="file-count">0</span>)</h3>
+        <ul id="file-list" class="file-list">
+          <!-- Files will be injected here via JS -->
+          <li class="empty-state" id="empty-state">No files queued yet.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Right Column: Settings & Actions -->
+    <div class="side-column">
+      
+      <div class="settings-card">
+        <h3>Conversion Settings</h3>
+        
+        <div class="setting-group">
+          <label for="output-format">Output Format</label>
+          <select id="output-format" class="styled-select">
+            <option value="image/png">PNG (.png) - Best Quality</option>
+            <option value="image/jpeg">JPEG (.jpg) - Smaller Size</option>
+            <option value="image/webp">WebP (.webp) - Modern</option>
+          </select>
+        </div>
+
+        <div class="setting-group" id="quality-group">
+          <label for="quality-slider">Quality: <span id="quality-val">90</span>%</label>
+          <input type="range" id="quality-slider" min="10" max="100" value="90">
+          <p class="helper-text">Only applies to JPEG and WebP.</p>
+        </div>
+
+      </div>
+
+      <div class="action-card">
+        <button id="convert-all-btn" class="primary-action-btn" disabled>
+          Convert All Files
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="fullpage.js"></script>
+</body>
+</html>
