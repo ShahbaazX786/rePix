@@ -10,56 +10,151 @@
   
   <!-- Navbar -->
   <header class="navbar">
-    <button class="icon-btn" aria-label="Menu">
+    <button class="icon-btn" aria-label="Menu" id="menu-btn">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
     </button>
     <div class="brand">
       <div class="logo">R</div>
       <span class="brand-name">Repix</span>
     </div>
-    <button class="icon-btn" aria-label="Settings">
+    <button class="icon-btn" aria-label="Settings" id="settings-btn">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
     </button>
   </header>
 
-  <!-- Format Selector -->
-  <div class="format-selector-wrapper">
-    <div class="format-selector">
-      <span class="format-label">Convert to:</span>
-      <select id="format-select">
+  <!-- Sidebar Overlay -->
+  <div id="sidebar-overlay" class="sidebar-overlay hidden"></div>
+
+  <!-- Sidebar Menu -->
+  <div id="sidebar-menu" class="sidebar-menu">
+    <div class="sidebar-header">
+      <div class="brand">
+        <div class="logo">R</div>
+        <span class="brand-name">Repix</span>
+      </div>
+      <button id="close-sidebar-btn" class="icon-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="sidebar-links">
+      <a href="#" id="menu-history-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        Conversion History
+      </a>
+      <a href="#" id="menu-rate-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        Rate Extension
+      </a>
+      <a href="#" id="menu-github-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        View on GitHub
+      </a>
+    </div>
+  </div>
+
+  <!-- Settings Pane (Hidden overlay) -->
+  <div id="settings-pane" class="settings-pane hidden">
+    <div class="settings-header">
+      <h3>Settings</h3>
+      <button id="close-settings-btn" class="icon-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    
+    <div class="setting-item">
+      <label for="settings-default-format">Default Format</label>
+      <select id="settings-default-format" class="styled-select" style="width: 100%; margin-top: 4px; padding: 6px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px;">
         <option value="image/png">PNG Format</option>
         <option value="image/jpeg">JPEG Format</option>
         <option value="image/webp">WebP Format</option>
       </select>
     </div>
-  </div>
 
-  <!-- Main Drop/Convert Area -->
-  <div class="main-converter">
-    <div class="drop-zone" id="drop-zone">
-      <div class="drop-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-      </div>
-      <p class="drop-title">Drop AVIF Here</p>
-      <p class="drop-subtitle">or click to browse</p>
-      <input type="file" id="file-input" accept="image/avif" hidden>
+    <div class="setting-item">
+      <label for="popup-quality">Default JPEG/WebP Quality</label>
+      <input type="range" id="popup-quality" min="10" max="100" value="90">
+      <div class="slider-val"><span id="popup-quality-val">90</span>%</div>
+    </div>
+    
+    <div class="setting-item toggle-row">
+      <label for="auto-save-toggle">Auto-save Downloads</label>
+      <input type="checkbox" id="auto-save-toggle" checked>
+    </div>
+
+    <div class="setting-item toggle-row">
+      <label for="clear-history-settings" style="color: #ef4444;">Wipe Data</label>
+      <button id="clear-history-settings" style="color: #ef4444; border: 1px solid #ef4444; padding: 4px 8px; border-radius: 4px; background: none; cursor:pointer; font-size: 12px;">Clear History</button>
     </div>
   </div>
 
-  <!-- Stats Section -->
-  <div class="stats-section">
-    <h3 class="stats-title">Today's Conversions</h3>
-    <div class="stats-grid">
-      <div class="stat-box">
-        <span class="stat-num">0</span>
-        <span class="stat-desc">PNGs</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-num">0</span>
-        <span class="stat-desc">JPEGs</span>
+  <!-- Main View Container -->
+  <div id="main-view">
+
+    <!-- Format Selector -->
+    <div class="format-selector-wrapper">
+      <div class="format-selector">
+        <span class="format-label">Convert to:</span>
+        <select id="format-select">
+          <option value="image/png">PNG Format</option>
+          <option value="image/jpeg">JPEG Format</option>
+          <option value="image/webp">WebP Format</option>
+        </select>
       </div>
     </div>
-  </div>
+
+    <!-- Main Drop/Convert Area -->
+    <div class="main-converter">
+      
+      <!-- Drop Zone -->
+      <div class="drop-zone" id="drop-zone">
+        <div class="drop-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+        </div>
+        <p class="drop-title">Drop AVIF Here</p>
+        <p class="drop-subtitle">or click to browse</p>
+        <input type="file" id="file-input" accept="image/avif" hidden>
+      </div>
+
+      <!-- File Ready State (Hidden initially) -->
+      <div id="file-ready-state" class="hidden" style="width: 100%; text-align: center;">
+         <div class="file-info-card" style="background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; margin-bottom: 16px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 8px;"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+            <p id="ready-filename" style="margin: 0; font-weight: 600; color: #111827; font-size: 14px; word-break: break-all;">image.avif</p>
+            <p id="ready-filesize" style="margin: 4px 0 0 0; color: #6b7280; font-size: 12px;">1.2 MB</p>
+         </div>
+         <button id="popup-convert-btn" style="width: 100%; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: bold; background: linear-gradient(135deg, #10b981 0%, #fbbf24 100%); color: white; border: none; cursor: pointer; transition: opacity 0.2s;">Convert to PNG</button>
+         <button id="popup-cancel-btn" style="width: 100%; margin-top: 12px; padding: 10px; background: transparent; color: #6b7280; border: none; font-size: 13px; cursor: pointer; font-weight: 500;">Cancel</button>
+      </div>
+
+      <!-- Success State (Hidden initially) -->
+      <div id="file-success-state" class="hidden" style="width: 100%; text-align: center;">
+         <div class="file-info-card" style="background: #ecfdf5; border-radius: 12px; padding: 20px; border: 1px solid #10b981; margin-bottom: 16px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 8px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            <p style="margin: 0; font-weight: bold; color: #10b981; font-size: 15px;">Conversion Complete!</p>
+            <p id="success-filename" style="margin: 4px 0 0 0; color: #065f46; font-size: 12px; word-break: break-all;"></p>
+         </div>
+         <button id="popup-download-btn" style="width: 100%; padding: 12px; border-radius: 8px; font-size: 14px; font-weight: bold; background: #111827; color: white; border: none; cursor: pointer; transition: opacity 0.2s;">Download File</button>
+         <button id="popup-convert-another-btn" style="width: 100%; margin-top: 12px; padding: 10px; background: transparent; color: #6b7280; border: none; font-size: 13px; cursor: pointer; font-weight: 500;">Convert Another</button>
+      </div>
+
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+      <h3 class="stats-title">Today's Conversions</h3>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <span class="stat-num">0</span>
+          <span class="stat-desc">PNGs</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">0</span>
+          <span class="stat-desc">JPEGs</span>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- End Main View -->
 
   <!-- Footer -->
   <footer class="footer">

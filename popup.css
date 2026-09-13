@@ -56,6 +56,137 @@ body {
   color: #111827;
 }
 
+/* Hidden Utility */
+.hidden {
+  display: none !important;
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -260px;
+  width: 240px;
+  background-color: white;
+  z-index: 110;
+  box-shadow: 4px 0 12px rgba(0,0,0,0.1);
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-menu.open {
+  left: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar-links {
+  padding: 12px 0;
+}
+
+.sidebar-links a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  color: #374151;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.sidebar-links a:hover {
+  background-color: #f3f4f6;
+  color: #10b981;
+}
+
+/* Settings Pane Overlay */
+.settings-pane {
+  position: absolute;
+  top: 49px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f4f7fb;
+  z-index: 50;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.settings-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #111827;
+}
+
+.setting-item {
+  background-color: white;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.setting-item label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.setting-item input[type=range] {
+  width: 100%;
+}
+
+.slider-val {
+  text-align: right;
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-row label {
+  margin-bottom: 0;
+}
+
 /* Format Selector */
 .format-selector-wrapper {
   padding: 20px 16px 10px 16px;
