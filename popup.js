@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Update stats in background
       await incrementStats(formatSelect, 1);
+      await logConversion(file.name, formatSelect, (file.size / 1024).toFixed(1));
       
       document.querySelector('.drop-title').textContent = 'Done!';
     } catch (error) {

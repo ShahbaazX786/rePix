@@ -70,3 +70,21 @@ async function incrementStats(format, count = 1) {
   const current = result[key] || 0;
   await chrome.storage.local.set({ [key]: current + count });
 }
+
+// History Tracker (saves last 50 conversions)
+async function logConversion(originalName, outputFormat, sizeKB) {
+  const result = await chrome.storage.local.get(['historyLogs']);
+  const logs = result.historyLogs || [];
+  
+  const newLog = {
+    filename: originalName,
+    format: outputFormat.split('/')[1].toUpperCase(),
+    size: sizeKB,
+    timestamp: new Date().toISOString()
+  };
+  
+  logs.unshift(newLog); // Add to top
+  if (logs.length > 50) logs.pop(); // Keep only last 50
+  
+  await chrome.storage.local.set({ historyLogs: logs });
+}

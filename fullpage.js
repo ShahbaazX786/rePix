@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Use the shared converter.js logic
         const convertedBlob = await convertImageFile(file, format, quality);
         downloadBlob(convertedBlob, file.name, format);
+        await logConversion(file.name, format, (file.size / 1024).toFixed(1));
       }
       
       // Update stats
@@ -137,4 +138,60 @@ document.addEventListener('DOMContentLoaded', () => {
       if (queuedFiles.length > 0) convertAllBtn.disabled = false;
     }
   });
+
+  // --- NAVIGATION LOGIC ---
+  const navConverter = document.getElementById('nav-converter');
+  const navHistory = document.getElementById('nav-history');
+  const converterView = document.getElementById('converter-view');
+  const historyView = document.getElementById('history-view');
+  const historyTbody = document.getElementById('history-tbody');
+  const clearHistoryBtn = document.getElementById('clear-history-btn');
+
+  navConverter.addEventListener('click', (e) => {
+    e.preventDefault();
+    navConverter.classList.add('active');
+    navHistory.classList.remove('active');
+    converterView.classList.add('active-view');
+    historyView.classList.remove('active-view');
+  });
+
+  navHistory.addEventListener('click', (e) => {
+    e.preventDefault();
+    navHistory.classList.add('active');
+    navConverter.classList.remove('active');
+    historyView.classList.add('active-view');
+    converterView.classList.remove('active-view');
+    loadHistoryTable();
+  });
+
+  function loadHistoryTable() {
+    chrome.storage.local.get(['historyLogs'], (result) => {
+      const logs = result.historyLogs || [];
+      historyTbody.innerHTML = '';
+      
+      if (logs.length === 0) {
+        historyTbody.innerHTML = '<tr><td colspan="4" class="empty-row">No history found.</td></tr>';
+        return;
+      }
+      
+      logs.forEach(log => {
+        const tr = document.createElement('tr');
+        const date = new Date(log.timestamp).toLocaleString();
+        tr.innerHTML = `
+          <td>${date}</td>
+          <td><strong>${log.filename}</strong></td>
+          <td><span class="format-badge">${log.format}</span></td>
+          <td>${log.size} KB</td>
+        `;
+        historyTbody.appendChild(tr);
+      });
+    });
+  }
+
+  clearHistoryBtn.addEventListener('click', () => {
+    chrome.storage.local.set({ historyLogs: [] }, () => {
+      loadHistoryTable();
+    });
+  });
+
 });
