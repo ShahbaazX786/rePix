@@ -27,7 +27,7 @@ body {
 }
 
 .logo {
-  background-color: #3b82f6;
+  background: linear-gradient(135deg, #10b981 0%, #fbbf24 100%);
   color: white;
   width: 32px;
   height: 32px;
@@ -61,7 +61,7 @@ body {
 }
 
 .nav-links a.active {
-  color: #3b82f6;
+  color: #10b981;
 }
 
 /* Workspace Layout */
@@ -101,8 +101,8 @@ body {
 }
 
 .full-drop-zone.dragover {
-  border-color: #3b82f6;
-  background-color: #eff6ff;
+  border-color: #10b981;
+  background-color: #ecfdf5;
 }
 
 .drop-icon {
@@ -226,7 +226,7 @@ body {
 }
 
 .styled-select:focus {
-  border-color: #3b82f6;
+  border-color: #10b981;
 }
 
 input[type=range] {
@@ -242,18 +242,18 @@ input[type=range] {
 .primary-action-btn {
   width: 100%;
   padding: 16px;
-  background-color: #3b82f6;
+  background: linear-gradient(135deg, #10b981 0%, #fbbf24 100%);
   color: white;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: opacity 0.2s;
 }
 
 .primary-action-btn:hover:not(:disabled) {
-  background-color: #2563eb;
+  opacity: 0.9;
 }
 
 .primary-action-btn:disabled {
@@ -326,8 +326,8 @@ input[type=range] {
 }
 
 .history-table .format-badge {
-  background-color: #eff6ff;
-  color: #3b82f6;
+  background-color: #ecfdf5;
+  color: #10b981;
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 12px;

@@ -5,7 +5,17 @@
   "description": "Easily convert AVIF images to PNG, JPEG, or WebP locally in your browser.",
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Repix: Convert Images"
+    "default_title": "Repix: Convert Images",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
   },
   "permissions": [
     "storage"
