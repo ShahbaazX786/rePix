@@ -233,4 +233,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- DARK MODE LOGIC ---
+  chrome.storage.local.get(['darkMode'], (result) => {
+    if (result.darkMode) {
+      document.body.classList.add('dark-mode');
+    }
+  });
+
+  // Listen for dark mode toggle from popup
+  chrome.storage.onChanged.addListener((changes, namespace) => {
+    if (namespace === 'local' && changes.darkMode) {
+      if (changes.darkMode.newValue) {
+        document.body.classList.add('dark-mode');
+      } else {
+        document.body.classList.remove('dark-mode');
+      }
+    }
+  });
+
 });

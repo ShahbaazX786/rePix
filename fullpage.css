@@ -313,17 +313,21 @@ input[type=range] {
 }
 
 .history-table th {
-  text-align: left;
-  padding: 12px;
-  border-bottom: 2px solid #f3f4f6;
+  background-color: #f9fafb;
   color: #6b7280;
   font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
 }
 
-.history-table td {
-  padding: 16px 12px;
-  border-bottom: 1px solid #f3f4f6;
-  color: #1f2937;
+.history-table td, .history-table th {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.history-table tr:last-child td {
+  border-bottom: none;
 }
 
 .history-table .format-badge {
@@ -339,4 +343,75 @@ input[type=range] {
   text-align: center;
   color: #9ca3af;
   padding: 32px !important;
+}
+
+/* --- DARK MODE --- */
+body.dark-mode {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+body.dark-mode .sidebar {
+  background-color: #1f2937;
+  border-right-color: #374151;
+}
+body.dark-mode .nav-links a {
+  color: #9ca3af;
+}
+body.dark-mode .nav-links a:hover {
+  background-color: #374151;
+  color: #f3f4f6;
+}
+body.dark-mode .nav-links a.active {
+  background-color: #374151;
+  color: #10b981;
+}
+
+body.dark-mode .main-content {
+  background-color: #111827;
+}
+
+body.dark-mode .workspace-card {
+  background-color: #1f2937;
+  border-color: #374151;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode .workspace-card h3,
+body.dark-mode .setting-row p:first-child {
+  color: #f3f4f6 !important;
+}
+
+body.dark-mode p,
+body.dark-mode .empty-subtitle,
+body.dark-mode .setting-row p:nth-child(2) {
+  color: #9ca3af !important;
+}
+
+body.dark-mode .drop-zone {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+body.dark-mode .drop-zone:hover {
+  border-color: #10b981;
+  background-color: #374151;
+}
+
+body.dark-mode select,
+body.dark-mode .history-table th {
+  background-color: #374151;
+  color: #f3f4f6;
+  border-color: #4b5563;
+}
+
+body.dark-mode .history-table td,
+body.dark-mode .history-table th,
+body.dark-mode .setting-row {
+  border-color: #374151 !important;
+}
+
+body.dark-mode .history-table tr:hover td {
+  background-color: #374151;
 }

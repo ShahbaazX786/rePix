@@ -94,6 +94,26 @@ document.addEventListener('DOMContentLoaded', () => {
     formatSelect.value = e.target.value;
   });
 
+  // Dark Mode Logic
+  const darkModeToggle = document.getElementById('sidebar-dark-mode');
+  
+  chrome.storage.local.get(['darkMode'], (result) => {
+    if (result.darkMode) {
+      document.body.classList.add('dark-mode');
+      darkModeToggle.checked = true;
+    }
+  });
+
+  darkModeToggle.addEventListener('change', (e) => {
+    const isDark = e.target.checked;
+    if (isDark) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    chrome.storage.local.set({ darkMode: isDark });
+  });
+
   clearHistoryBtn.addEventListener('click', () => {
     if(confirm("Are you sure you want to completely wipe your data? \n\nWhy not export the history first? (Export feature coming soon!)")) {
       chrome.storage.local.set({ pngCount: 0, jpegCount: 0, webpCount: 0, historyLogs: [] }, () => {
