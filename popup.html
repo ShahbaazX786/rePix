@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repix</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <header class="navbar">
+    <button class="icon-btn" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <div class="brand">
+      <div class="logo">R</div>
+      <span class="brand-name">Repix</span>
+    </div>
+    <button class="icon-btn" aria-label="Settings">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+    </button>
+  </header>
+
+  <!-- Format Selector -->
+  <div class="format-selector-wrapper">
+    <div class="format-selector">
+      <span class="format-label">Convert to:</span>
+      <select id="format-select">
+        <option value="image/png">PNG Format</option>
+        <option value="image/jpeg">JPEG Format</option>
+        <option value="image/webp">WebP Format</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Main Drop/Convert Area -->
+  <div class="main-converter">
+    <div class="drop-zone" id="drop-zone">
+      <div class="drop-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+      </div>
+      <p class="drop-title">Drop AVIF Here</p>
+      <p class="drop-subtitle">or click to browse</p>
+      <input type="file" id="file-input" accept="image/avif" hidden>
+    </div>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats-section">
+    <h3 class="stats-title">Today's Conversions</h3>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <span class="stat-num">0</span>
+        <span class="stat-desc">PNGs</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">0</span>
+        <span class="stat-desc">JPEGs</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <button id="open-full-page-btn" class="text-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+      Open Full Dashboard
+    </button>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
