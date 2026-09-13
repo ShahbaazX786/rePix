@@ -109,6 +109,56 @@
       </div>
     </div> <!-- End History View -->
 
+    <!-- SETTINGS VIEW -->
+    <div id="settings-view" class="view-container">
+      <div class="workspace-card" style="padding: 30px;">
+        <h3 style="margin-top: 0; margin-bottom: 24px; color: #111827; font-size: 20px;">Preferences</h3>
+        
+        <div class="settings-grid" style="display: grid; gap: 20px; max-width: 600px;">
+          
+          <div class="setting-row" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb;">
+            <div>
+              <p style="margin: 0; font-weight: 600; color: #374151;">Default Output Format</p>
+              <p style="margin: 4px 0 0 0; font-size: 13px; color: #6b7280;">Choose the primary format used for quick conversions.</p>
+            </div>
+            <select id="fp-settings-format" class="styled-select" style="width: 150px;">
+              <option value="image/png">PNG</option>
+              <option value="image/jpeg">JPEG</option>
+              <option value="image/webp">WebP</option>
+            </select>
+          </div>
+
+          <div class="setting-row" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb;">
+            <div style="flex: 1; margin-right: 40px;">
+              <p style="margin: 0; font-weight: 600; color: #374151;">Default JPEG/WebP Quality</p>
+              <p style="margin: 4px 0 0 0; font-size: 13px; color: #6b7280;">Higher quality means larger file sizes.</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; width: 200px;">
+              <input type="range" id="fp-settings-quality" min="10" max="100" value="90" style="flex: 1;">
+              <span id="fp-quality-val" style="font-weight: bold; width: 40px; text-align: right;">90%</span>
+            </div>
+          </div>
+
+          <div class="setting-row" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb;">
+            <div>
+              <p style="margin: 0; font-weight: 600; color: #374151;">Auto-save to Downloads</p>
+              <p style="margin: 4px 0 0 0; font-size: 13px; color: #6b7280;">Automatically trigger file downloads after conversion finishes.</p>
+            </div>
+            <input type="checkbox" id="fp-autosave-toggle" checked style="width: 18px; height: 18px;">
+          </div>
+
+          <div class="setting-row" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px;">
+            <div>
+              <p style="margin: 0; font-weight: 600; color: #ef4444;">Wipe Extension Data</p>
+              <p style="margin: 4px 0 0 0; font-size: 13px; color: #6b7280;">Permanently delete all saved stats and history logs.</p>
+            </div>
+            <button id="fp-clear-data-btn" class="secondary-btn" style="color: #ef4444; border-color: #ef4444;">Clear All Data</button>
+          </div>
+
+        </div>
+      </div>
+    </div> <!-- End Settings View -->
+
   </main>
 
   <script src="converter.js"></script>

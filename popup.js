@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('menu-github-btn').addEventListener('click', (e) => {
     e.preventDefault();
-    chrome.tabs.create({ url: "https://github.com" });
+    chrome.tabs.create({ url: "https://github.com/ShahbaazX786/rePix" });
   });
 
   // --- TWO STEP CONVERSION LOGIC ---

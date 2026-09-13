@@ -142,26 +142,57 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- NAVIGATION LOGIC ---
   const navConverter = document.getElementById('nav-converter');
   const navHistory = document.getElementById('nav-history');
+  const navSettings = document.getElementById('nav-settings');
+  
   const converterView = document.getElementById('converter-view');
   const historyView = document.getElementById('history-view');
+  const settingsView = document.getElementById('settings-view');
+
   const historyTbody = document.getElementById('history-tbody');
   const clearHistoryBtn = document.getElementById('clear-history-btn');
 
+  // Switch to Converter
   navConverter.addEventListener('click', (e) => {
     e.preventDefault();
     navConverter.classList.add('active');
     navHistory.classList.remove('active');
+    navSettings.classList.remove('active');
+    
     converterView.classList.add('active-view');
     historyView.classList.remove('active-view');
+    settingsView.classList.add('hidden');
+    converterView.classList.remove('hidden');
+    historyView.classList.add('hidden');
   });
 
+  // Switch to History
   navHistory.addEventListener('click', (e) => {
     e.preventDefault();
     navHistory.classList.add('active');
     navConverter.classList.remove('active');
+    navSettings.classList.remove('active');
+    
     historyView.classList.add('active-view');
     converterView.classList.remove('active-view');
+    settingsView.classList.add('hidden');
+    historyView.classList.remove('hidden');
+    converterView.classList.add('hidden');
+    
     loadHistoryTable();
+  });
+
+  // Switch to Settings
+  navSettings.addEventListener('click', (e) => {
+    e.preventDefault();
+    navSettings.classList.add('active');
+    navConverter.classList.remove('active');
+    navHistory.classList.remove('active');
+    
+    settingsView.classList.remove('hidden');
+    historyView.classList.remove('active-view');
+    converterView.classList.remove('active-view');
+    converterView.classList.add('hidden');
+    historyView.classList.add('hidden');
   });
 
   function loadHistoryTable() {
@@ -190,10 +221,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   clearHistoryBtn.addEventListener('click', () => {
     if (confirm("Are you sure you want to completely wipe your data? \n\nWhy not export the history first? (Export feature coming soon!)")) {
-      chrome.storage.local.set({ historyLogs: [] }, () => {
+      chrome.storage.local.set({ historyLogs: [], pngCount: 0, jpegCount: 0, webpCount: 0 }, () => {
         loadHistoryTable();
       });
     }
   });
+
+  const fpClearDataBtn = document.getElementById('fp-clear-data-btn');
+  if (fpClearDataBtn) {
+    fpClearDataBtn.addEventListener('click', () => {
+      if (confirm("Are you sure you want to completely wipe your data? \n\nWhy not export the history first? (Export feature coming soon!)")) {
+        chrome.storage.local.set({ historyLogs: [], pngCount: 0, jpegCount: 0, webpCount: 0 }, () => {
+          loadHistoryTable();
+          alert("All extension data has been cleared.");
+        });
+      }
+    });
+  }
 
 });
