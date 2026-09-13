@@ -160,9 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     converterView.classList.add('active-view');
     historyView.classList.remove('active-view');
-    settingsView.classList.add('hidden');
-    converterView.classList.remove('hidden');
-    historyView.classList.add('hidden');
+    settingsView.classList.remove('active-view');
   });
 
   // Switch to History
@@ -174,9 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     historyView.classList.add('active-view');
     converterView.classList.remove('active-view');
-    settingsView.classList.add('hidden');
-    historyView.classList.remove('hidden');
-    converterView.classList.add('hidden');
+    settingsView.classList.remove('active-view');
     
     loadHistoryTable();
   });
@@ -188,11 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
     navConverter.classList.remove('active');
     navHistory.classList.remove('active');
     
-    settingsView.classList.remove('hidden');
+    settingsView.classList.add('active-view');
     historyView.classList.remove('active-view');
     converterView.classList.remove('active-view');
-    converterView.classList.add('hidden');
-    historyView.classList.add('hidden');
   });
 
   function loadHistoryTable() {

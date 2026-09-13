@@ -272,8 +272,9 @@ input[type=range] {
   gap: 32px;
 }
 
-#history-view.active-view {
-  display: block; /* History is single column */
+#history-view.active-view,
+#settings-view.active-view {
+  display: block; /* Single column */
 }
 
 /* History Styles */

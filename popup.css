@@ -103,25 +103,56 @@ body {
   border-bottom: 1px solid #e5e7eb;
 }
 
-.sidebar-links {
-  padding: 12px 0;
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 0;
 }
 
-.sidebar-links a {
+.sidebar-section {
+  padding: 8px 0;
+}
+
+.sidebar-heading {
+  margin: 0 0 10px 0;
+  padding: 0 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.sidebar-divider {
+  border-top: 1px solid #e5e7eb;
+  margin: 8px 0;
+}
+
+.sidebar-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 20px;
+  font-size: 14px;
+  color: #374151;
+}
+
+.sidebar-section a {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 20px;
-  color: #374151;
+  padding: 10px 20px;
+  color: #3b82f6;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
   transition: background-color 0.2s;
 }
 
-.sidebar-links a:hover {
+.sidebar-section a:hover {
   background-color: #f3f4f6;
-  color: #10b981;
+}
+
+.sidebar-section a svg {
+  stroke: #3b82f6;
 }
 
 /* Settings Pane Overlay */
