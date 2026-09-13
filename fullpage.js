@@ -121,7 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
         downloadBlob(convertedBlob, file.name, format);
       }
       
-      // Update stats (we will store this in chrome.storage later for persistence)
+      // Update stats
+      await incrementStats(format, queuedFiles.length);
       alert(`Successfully converted ${queuedFiles.length} files!`);
       
       // Clear queue

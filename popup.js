@@ -53,6 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const convertedBlob = await convertImageFile(file, formatSelect, 0.9);
       downloadBlob(convertedBlob, file.name, formatSelect);
       
+      // Update stats in background
+      await incrementStats(formatSelect, 1);
+      
       document.querySelector('.drop-title').textContent = 'Done!';
     } catch (error) {
       console.error(error);
@@ -61,7 +64,24 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         document.querySelector('.drop-title').textContent = originalTitle;
         dropZone.style.pointerEvents = 'all';
+        loadStats(); // refresh numbers
       }, 2000);
     }
   }
+
+  // Fetch and display stats on popup open
+  function loadStats() {
+    chrome.storage.local.get(['pngCount', 'jpegCount'], (result) => {
+      const pngs = result.pngCount || 0;
+      const jpegs = result.jpegCount || 0;
+      const statNums = document.querySelectorAll('.stat-num');
+      if(statNums.length >= 2) {
+        statNums[0].textContent = pngs;
+        statNums[1].textContent = jpegs;
+      }
+    });
+  }
+
+  // Initial load
+  loadStats();
 });

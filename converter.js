@@ -62,3 +62,11 @@ function downloadBlob(blob, originalName, outputMimeType) {
     URL.revokeObjectURL(url);
   }, 100);
 }
+
+// Stats Tracker (saves to chrome.storage.local)
+async function incrementStats(format, count = 1) {
+  const key = format === 'image/png' ? 'pngCount' : (format === 'image/jpeg' ? 'jpegCount' : 'webpCount');
+  const result = await chrome.storage.local.get([key]);
+  const current = result[key] || 0;
+  await chrome.storage.local.set({ [key]: current + count });
+}
