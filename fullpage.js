@@ -189,9 +189,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   clearHistoryBtn.addEventListener('click', () => {
-    chrome.storage.local.set({ historyLogs: [] }, () => {
-      loadHistoryTable();
-    });
+    if (confirm("Are you sure you want to completely wipe your data? \n\nWhy not export the history first? (Export feature coming soon!)")) {
+      chrome.storage.local.set({ historyLogs: [] }, () => {
+        loadHistoryTable();
+      });
+    }
   });
 
 });

@@ -59,6 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function openSidebar() {
     sidebarMenu.classList.add('open');
     sidebarOverlay.classList.remove('hidden');
+    // Ensure settings pane is closed if opening sidebar
+    settingsPane.classList.add('hidden');
+    mainView.classList.remove('hidden');
   }
 
   function closeSidebar() {
@@ -73,12 +76,14 @@ document.addEventListener('DOMContentLoaded', () => {
   settingsBtn.addEventListener('click', () => {
     settingsPane.classList.remove('hidden');
     mainView.classList.add('hidden');
+    document.querySelector('.navbar').classList.add('hidden');
     closeSidebar();
   });
 
   closeSettingsBtn.addEventListener('click', () => {
     settingsPane.classList.add('hidden');
     mainView.classList.remove('hidden');
+    document.querySelector('.navbar').classList.remove('hidden');
   });
 
   popupQuality.addEventListener('input', (e) => {
@@ -90,8 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   clearHistoryBtn.addEventListener('click', () => {
-    if(confirm("Are you sure you want to wipe all stats and history?")) {
-      chrome.storage.local.set({ pngCount: 0, jpegCount: 0, webpCount: 0, conversionHistory: [] }, () => {
+    if(confirm("Are you sure you want to completely wipe your data? \n\nWhy not export the history first? (Export feature coming soon!)")) {
+      chrome.storage.local.set({ pngCount: 0, jpegCount: 0, webpCount: 0, historyLogs: [] }, () => {
         loadStats();
         alert("Data cleared.");
       });

@@ -65,8 +65,8 @@ body {
 .sidebar-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
   opacity: 1;
   transition: opacity 0.3s ease;
 }
@@ -84,8 +84,8 @@ body {
   left: -260px;
   width: 240px;
   background-color: white;
-  z-index: 110;
-  box-shadow: 4px 0 12px rgba(0,0,0,0.1);
+  z-index: 1000;
+  box-shadow: 4px 0 12px rgba(0,0,0,0.15);
   transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
@@ -126,15 +126,11 @@ body {
 
 /* Settings Pane Overlay */
 .settings-pane {
-  position: absolute;
-  top: 49px;
-  left: 0;
-  right: 0;
-  bottom: 0;
   background-color: #f4f7fb;
-  z-index: 50;
   padding: 20px;
   box-sizing: border-box;
+  width: 100%;
+  min-height: 400px;
 }
 
 .settings-header {
